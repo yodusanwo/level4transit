@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NEMT — Collin & Rockwall</title>
+<style>
+  :root{
+    --ink:#0f172a;
+    --muted:#475569;
+    --bg:#ffffff;
+    --brand:#0b74b3;             /* hero blue */
+    --bar:#2f5d8c;               /* top bar */
+    --pill:#36a898;              /* green accents */
+    --card:#f1f5f9;
+    --panel:#e6eef6;
+    --radius:14px;
+    --shadow:0 12px 28px rgba(2,6,23,.08);
+    --wrap:1160px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  a{color:inherit}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+
+  /* Top bar with centered logo */
+  .topbar{background:var(--bar);padding:20px 0}
+  .logo{
+    width:120px;height:44px;margin:0 auto;border:3px solid rgba(255,255,255,.9);
+    color:#fff;display:flex;align-items:center;justify-content:center;border-radius:10px;
+    font-weight:800;text-transform:uppercase;letter-spacing:.6px;background:rgba(255,255,255,.1)
+  }
+
+  /* Hero */
+  .hero{background:var(--brand);color:#fff}
+  .hero .inner{display:grid;grid-template-columns:1.2fr .9fr;gap:32px;align-items:center;padding:36px 0}
+  .hero h1{margin:0 0 14px 0;font-size:34px;line-height:1.2}
+  .hero p{margin:0 0 18px 0;font-size:18px}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;border-radius:10px;padding:12px 18px;border:2px solid transparent;text-decoration:none;box-shadow:var(--shadow)}
+  .btn-primary{background:#fff;color:#0b1220}
+  .btn-secondary{background:var(--pill);color:#fff}
+  .hero-img{
+    background:#fff;border-radius:16px;padding:10px;box-shadow:var(--shadow)
+  }
+  .hero-img img{width:100%;height:260px;object-fit:cover;border-radius:12px;display:block}
+
+  /* Form section */
+  .form-wrap{padding:28px 0 10px}
+  .form-wrap h2{text-align:center;margin:8px 0 20px 0;text-underline-offset:3px}
+  form{max-width:520px;margin:0 auto;background:#fff;border-radius:14px;padding:10px 0 0}
+  .field{margin:12px 0}
+  label{display:block;font-weight:600;margin-bottom:6px}
+  input, select{
+    width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px;
+    font-size:15px;background:#fff
+  }
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted)}
+  .submit{display:flex;justify-content:center;margin:16px 0 28px}
+  .submit .btn{padding:10px 16px;border-radius:999px}
+
+  /* Feature row (On time / Trained / Door thru Door) */
+  .features{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:stretch;margin:30px auto}
+  .feature{background:#2e5c8b;color:#fff;border-radius:0;min-height:120px;display:flex;flex-direction:column;justify-content:center;padding:26px 24px;position:relative}
+  .feature.middle{background:#edf2f8;color:var(--ink)}
+  .feature h4{margin:8px 0 6px}
+  .kicker{opacity:.85;font-size:14px}
+  .fi{width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+  .fi svg{width:22px;height:22px;fill:currentColor;color:#fff}
+  .feature.middle .fi{background:#cfe2ff;color:#2f5d8c}
+
+  /* Services section */
+  .services{display:grid;grid-template-columns:1.1fr 1.3fr;gap:28px;align-items:start;margin:26px 0}
+  .services h3{margin:0 0 8px}
+  .services p{color:var(--muted);margin:0 0 16px}
+  .service-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tile{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:12px}
+  .tile img{width:100%;height:120px;object-fit:cover;border-radius:10px}
+  .tile h5{margin:10px 0 6px;font-size:15px}
+  .tile small{color:var(--muted);font-size:12px;display:block}
+
+  /* Mid CTA */
+  .mid-cta{text-align:center;margin:34px 0}
+  .mid-cta h4{margin:0 0 10px}
+  .mid-cta .btn{border-radius:999px}
+
+  /* County banner */
+  .county{background:#2b3342 url('https://via.placeholder.com/1600x300') center/cover no-repeat;position:relative;color:#fff}
+  .county::before{content:"";position:absolute;inset:0;background:rgba(15,23,42,.55)}
+  .county .inner{position:relative;padding:26px 0;text-align:center}
+  .county p{margin:8px 0 0;opacity:.9;font-size:13px}
+
+  /* Testimonials */
+  .testimonials{padding:34px 0}
+  .eyebrow{text-align:center;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-bottom:6px}
+  .testimonials h3{text-align:center;margin:0 0 18px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+  .quote{font-size:14px;color:var(--muted);margin-bottom:14px}
+  .person{font-weight:700}
+
+  /* FAQ */
+  .faq{padding:18px 0 50px}
+  .faq h3{margin:0 0 6px}
+  .pill{display:inline-block;background:var(--pill);color:#fff;font-weight:700;padding:6px 12px;border-radius:10px;margin:6px 0 16px}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .faq-item{background:#eaf3fa;border-radius:12px;padding:18px}
+  .faq-item h4{margin:0 0 8px;font-size:16px}
+  .faq-item p{margin:0;color:var(--muted);font-size:14px}
+
+  /* Utilities */
+  hr.sep{border:none;border-top:1px solid #e2e8f0;margin:24px 0}
+
+  /* Responsive */
+  @media (max-width:1000px){
+    .hero .inner{grid-template-columns:1fr}
+    .hero-img img{height:220px}
+    .features{grid-template-columns:1fr}
+    .services{grid-template-columns:1fr}
+    .service-tiles{grid-template-columns:1fr 1fr}
+    .cards{grid-template-columns:1fr}
+    .faq-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="logo">Your Logo</div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap inner">
+      <div>
+        <h1>Non-Emergency Medical Transportation — Collin &amp; Rockwall</h1>
+        <p>24/7 rides for appointments, dialysis, hospital discharges &amp; more. <strong>Wheelchair • Ambulatory • Stretcher.</strong></p>
+        <div class="btn-row">
+          <a href="tel:+1-000-000-0000" class="btn btn-primary">Call Now</a>
+          <a href="#ride-form" class="btn btn-secondary">Schedule a Ride</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <!-- Replace with your photo -->
+        <img src="https://via.placeholder.com/640x400?text=NEMT+Vehicle" alt="Driver assisting passenger into NEMT van">
+      </div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="form-wrap" id="ride-form">
+    <div class="wrap">
+      <h2><u>Get My Ride Confirmation</u></h2>
+      <form>
+        <div class="field">
+          <label for="name">Full name <span style="color:#dc2626">*</span></label>
+          <input id="name" type="text" required placeholder="Your full name">
+        </div>
+        <div class="field">
+          <label for="phone">Number <span style="color:#dc2626">*</span></label>
+          <input id="phone" type="tel" required placeholder="(###) ###-####">
+        </div>
+        <div class="field">
+          <label for="email">Email <span style="color:#dc2626">*</span></label>
+          <input id="email" type="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="mobility">Mobility <span style="color:#dc2626">*</span></label>
+          <select id="mobility" required>
+            <option value="">Select</option>
+            <option>Wheelchair</option>
+            <option>Ambulatory</option>
+            <option>Stretcher/Gurney</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="payer">Payer <span style="color:#dc2626">*</span></label>
+          <select id="payer" required>
+            <option value="">Select</option>
+            <option>Private Pay</option>
+            <option>Facility</option>
+            <option>Program</option>
+          </select>
+        </div>
+        <div class="field consent">
+          <input id="consent" type="checkbox" />
+          <label for="consent">I consent to be contacted about my ride request.</label>
+        </div>
+        <div class="submit">
+          <button type="submit" class="btn btn-secondary">Get My Ride Confirmation</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Feature row -->
+  <section class="wrap features">
+    <div class="feature">
+      <div class="fi" aria-hidden="true">
+        <!-- clock icon -->
+        <svg viewBox="0 0 24 24"><path d="M12 1.75a10.25 10.25 0 1 0 0 20.5 10.25 10.25 0 0 0 0-20.5Zm.75 5.75a.75.75 0 0 0-1.5 0v5l3.5 2.1a.75.75 0 0 0 .75-1.3l-2.75-1.65V7.5Z"/></svg>
+      </div>
+      <h4>On time</h4>
+      <div class="kicker"><strong>Always on time:</strong> efficient routing, proactive updates.</div>
+    </div>
+    <div class="feature middle">
+      <div class="fi" aria-hidden="true">
+        <!-- car icon -->
+        <svg viewBox="0 0 24 24"><path d="M7 13h10l1.5-4.5A2 2 0 0 0 16.6 6H7.4A2 2 0 0 0 5.5 8.5L7 13Zm-1 1a2 2 0 1 0 0 4h1v-2H6Zm11 0v2h1a2 2 0 1 0-1-2ZM4 18h1v2a1 1 0 0 0 2 0v-2h10v2a1 1 0 1 0 2 0v-2h1v-2H4v2Z"/></svg>
+      </div>
+      <h4>Trained Drivers</h4>
+      <div class="kicker"><strong>Safety in motion:</strong> maintained vehicles, trained pros.</div>
+    </div>
+    <div class="feature">
+      <div class="fi" aria-hidden="true">
+        <!-- heart icon -->
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.35-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19.5 16.65 12 21 12 21Z"/></svg>
+      </div>
+      <h4>Door thru Door Care</h4>
+      <div class="kicker"><strong>Empathetic care:</strong> passengers feel supported from door to door.</div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="wrap services">
+    <div>
+      <h3>Services</h3>
+      <p>
+        Level 4 Transit delivers safe, on-time NEMT across DFW—wheelchair, ambulatory, and stretcher—door-to-door for appointments and discharges, with trained drivers and easy private pay or facility billing.
+      </p>
+      <a href="#ride-form" class="btn btn-secondary">Schedule a Ride</a>
+    </div>
+    <div class="service-tiles">
+      <article class="tile">
+        <img src="https://via.placeholder.com/360x220?text=Wheelchair" alt="Wheelchair transport">
+        <h5>Wheelchair Transport</h5>
+        <small>Securement, ramps, skilled assistance.</small>
+      </article>
+      <article class="tile">
+        <img src="https://via.placeholder.com/360x220?text=Ambulatory" alt="Ambulatory transport">
+        <h5>Ambulatory Transport</h5>
+        <small>Curb-to-curb support for walk-assisted riders.</small>
+      </article>
+      <article class="tile">
+        <img src="https://via.placeholder.com/360x220?text=Stretcher%2FGurney" alt="Stretcher or gurney transport">
+        <h5>Stretcher/Gurney Transport</h5>
+        <small>Two-person assist for safe transfers.</small>
+      </article>
+    </div>
+  </section>
+
+  <!-- Mid CTA -->
+  <section class="wrap mid-cta">
+    <h4>Tell us your pickup &amp; drop-off to get an exact quote in minutes.<br/>Private pay accepted</h4>
+    <a href="#ride-form" class="btn btn-secondary">Schedule a Ride</a>
+  </section>
+
+  <!-- County banner -->
+  <section class="county">
+    <div class="inner wrap">
+      <h4>Proudly serving Collin &amp; Rockwall Counties and nearby communities.</h4>
+      <p>(75002), (75013), (75023), (75024), (75025), (75030), (75032), (75087), (75189)</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="wrap testimonials">
+    <div class="eyebrow">TESTIMONIALS</div>
+    <h3>Why do your customers loves you</h3>
+    <div class="cards">
+      <article class="card">
+        <div class="quote">“My busy schedule leaves little, if any, time for blogging and social media. The Lorem Ipsum Company has been a huge part of helping me grow my business through organic search and content marketing.”</div>
+        <div class="person">Kelsi Gordon</div>
+      </article>
+      <article class="card">
+        <div class="quote">“My busy schedule leaves little, if any, time for blogging and social media. The Lorem Ipsum Company has been a huge part of helping me grow my business through organic search and content marketing.”</div>
+        <div class="person">Roland Weedon</div>
+      </article>
+      <article class="card">
+        <div class="quote">“My busy schedule leaves little, if any, time for blogging and social media. The Lorem Ipsum Company has been a huge part of helping me grow my business through organic search and content marketing.”</div>
+        <div class="person">Tasha Rob</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="wrap faq">
+    <h3>FAQ</h3>
+    <span class="pill">General</span>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>Do you operate 24/7?</h4>
+        <p>This is a great place to let your visitors know who you are. Add useful information that your users may find interesting. What makes you stand out? Why you do what you do? Here is where you can let them know. Zoho Sites, your site, your story.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Which mobility types do you support?</h4>
+        <p>Ambulatory, wheelchair, stretcher.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do you handle round trips?</h4>
+        <p>Yes—choose “Round Trip” in the form.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is this an ambulance?</h4>
+        <p>No. We’re non-emergency medical transport (NEMT). For emergencies, call 911.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do you work with facilities/public programs?</h4>
+        <p>Yes—ask us about options.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How long is my membership?</h4>
+        <p>This is a great place to let your visitors know who you are. Add useful information that your users may find interesting. Zoho Sites, your site, your story.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
