@@ -9,9 +9,9 @@
     --ink:#0f172a;
     --muted:#475569;
     --bg:#ffffff;
-    --brand:#0b74b3;             /* hero blue */
-    --bar:#2f5d8c;               /* top bar */
-    --pill:#36a898;              /* green accents */
+    --brand:#0b74b3;
+    --bar:#2f5d8c;
+    --pill:#36a898;
     --card:#f1f5f9;
     --radius:14px;
     --shadow:0 12px 28px rgba(2,6,23,.08);
@@ -66,11 +66,11 @@
   .fi svg{width:22px;height:22px;fill:currentColor;color:#fff}
   .feature.middle .fi{background:#cfe2ff;color:#2f5d8c}
 
-  /* Services (UPDATED to center + equal columns) */
+  /* Services — centered section, LEFT-aligned tiles */
   .services{
-    margin:26px auto;                 /* centers section like others */
+    margin:26px auto;
     display:grid;
-    grid-template-columns: 1fr 1fr;   /* equal columns = visually centered */
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
     gap:28px;
     align-items:start;
   }
@@ -80,9 +80,12 @@
     display:grid;
     grid-template-columns: repeat(3, minmax(0,1fr));
     gap:18px;
-    justify-items:center;             /* center tiles inside their column */
+    justify-items:start;      /* CHANGED: was center — aligns tiles to column edge */
   }
-  .tile{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:12px;width:100%;max-width:320px}
+  .tile{
+    background:#fff;border-radius:12px;box-shadow:var(--shadow);
+    padding:12px;width:100%;max-width:320px; /* keep cards tidy without drifting */
+  }
   .tile img{width:100%;height:120px;object-fit:cover;border-radius:10px}
   .tile h5{margin:10px 0 6px;font-size:15px}
   .tile small{color:var(--muted);font-size:12px;display:block}
@@ -142,7 +145,8 @@
     <div class="wrap inner">
       <div>
         <h1>Non-Emergency Medical Transportation — Collin &amp; Rockwall</h1>
-        <p>24/7 rides for appointments, dialysis, hospital discharges &amp; more. <strong>Wheelchair • Ambulatory • Stretcher.</strong></p>
+        <p>24/7 rides for appointments, dialysis, hospital discharges &amp; more.
+          <strong>Wheelchair • Ambulatory • Stretcher.</strong></p>
         <div class="btn-row">
           <a href="tel:+1-000-000-0000" class="btn btn-primary">Call Now</a>
           <a href="#ride-form" class="btn btn-secondary">Schedule a Ride</a>
@@ -225,7 +229,7 @@
     </div>
   </section>
 
-  <!-- Services (centered) -->
+  <!-- Services -->
   <section class="wrap services">
     <div class="services-copy">
       <h3>Services</h3>
