@@ -13,7 +13,6 @@
     --bar:#2f5d8c;               /* top bar */
     --pill:#36a898;              /* green accents */
     --card:#f1f5f9;
-    --panel:#e6eef6;
     --radius:14px;
     --shadow:0 12px 28px rgba(2,6,23,.08);
     --wrap:1160px;
@@ -40,9 +39,7 @@
   .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;border-radius:10px;padding:12px 18px;border:2px solid transparent;text-decoration:none;box-shadow:var(--shadow)}
   .btn-primary{background:#fff;color:#0b1220}
   .btn-secondary{background:var(--pill);color:#fff}
-  .hero-img{
-    background:#fff;border-radius:16px;padding:10px;box-shadow:var(--shadow)
-  }
+  .hero-img{background:#fff;border-radius:16px;padding:10px;box-shadow:var(--shadow)}
   .hero-img img{width:100%;height:260px;object-fit:cover;border-radius:12px;display:block}
 
   /* Form section */
@@ -59,9 +56,9 @@
   .submit{display:flex;justify-content:center;margin:16px 0 28px}
   .submit .btn{padding:10px 16px;border-radius:999px}
 
-  /* Feature row (On time / Trained / Door thru Door) */
+  /* Feature row */
   .features{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:stretch;margin:30px auto}
-  .feature{background:#2e5c8b;color:#fff;border-radius:0;min-height:120px;display:flex;flex-direction:column;justify-content:center;padding:26px 24px;position:relative}
+  .feature{background:#2e5c8b;color:#fff;min-height:120px;display:flex;flex-direction:column;justify-content:center;padding:26px 24px}
   .feature.middle{background:#edf2f8;color:var(--ink)}
   .feature h4{margin:8px 0 6px}
   .kicker{opacity:.85;font-size:14px}
@@ -69,12 +66,23 @@
   .fi svg{width:22px;height:22px;fill:currentColor;color:#fff}
   .feature.middle .fi{background:#cfe2ff;color:#2f5d8c}
 
-  /* Services section */
-  .services{display:grid;grid-template-columns:1.1fr 1.3fr;gap:28px;align-items:start;margin:26px 0}
+  /* Services (UPDATED to center + equal columns) */
+  .services{
+    margin:26px auto;                 /* centers section like others */
+    display:grid;
+    grid-template-columns: 1fr 1fr;   /* equal columns = visually centered */
+    gap:28px;
+    align-items:start;
+  }
   .services h3{margin:0 0 8px}
   .services p{color:var(--muted);margin:0 0 16px}
-  .service-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .tile{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:12px}
+  .service-tiles{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap:18px;
+    justify-items:center;             /* center tiles inside their column */
+  }
+  .tile{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:12px;width:100%;max-width:320px}
   .tile img{width:100%;height:120px;object-fit:cover;border-radius:10px}
   .tile h5{margin:10px 0 6px;font-size:15px}
   .tile small{color:var(--muted);font-size:12px;display:block}
@@ -107,9 +115,6 @@
   .faq-item{background:#eaf3fa;border-radius:12px;padding:18px}
   .faq-item h4{margin:0 0 8px;font-size:16px}
   .faq-item p{margin:0;color:var(--muted);font-size:14px}
-
-  /* Utilities */
-  hr.sep{border:none;border-top:1px solid #e2e8f0;margin:24px 0}
 
   /* Responsive */
   @media (max-width:1000px){
@@ -144,7 +149,6 @@
         </div>
       </div>
       <div class="hero-img">
-        <!-- Replace with your photo -->
         <img src="https://via.placeholder.com/640x400?text=NEMT+Vehicle" alt="Driver assisting passenger into NEMT van">
       </div>
     </div>
@@ -200,7 +204,6 @@
   <section class="wrap features">
     <div class="feature">
       <div class="fi" aria-hidden="true">
-        <!-- clock icon -->
         <svg viewBox="0 0 24 24"><path d="M12 1.75a10.25 10.25 0 1 0 0 20.5 10.25 10.25 0 0 0 0-20.5Zm.75 5.75a.75.75 0 0 0-1.5 0v5l3.5 2.1a.75.75 0 0 0 .75-1.3l-2.75-1.65V7.5Z"/></svg>
       </div>
       <h4>On time</h4>
@@ -208,7 +211,6 @@
     </div>
     <div class="feature middle">
       <div class="fi" aria-hidden="true">
-        <!-- car icon -->
         <svg viewBox="0 0 24 24"><path d="M7 13h10l1.5-4.5A2 2 0 0 0 16.6 6H7.4A2 2 0 0 0 5.5 8.5L7 13Zm-1 1a2 2 0 1 0 0 4h1v-2H6Zm11 0v2h1a2 2 0 1 0-1-2ZM4 18h1v2a1 1 0 0 0 2 0v-2h10v2a1 1 0 1 0 2 0v-2h1v-2H4v2Z"/></svg>
       </div>
       <h4>Trained Drivers</h4>
@@ -216,7 +218,6 @@
     </div>
     <div class="feature">
       <div class="fi" aria-hidden="true">
-        <!-- heart icon -->
         <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.35-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19.5 16.65 12 21 12 21Z"/></svg>
       </div>
       <h4>Door thru Door Care</h4>
@@ -224,9 +225,9 @@
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Services (centered) -->
   <section class="wrap services">
-    <div>
+    <div class="services-copy">
       <h3>Services</h3>
       <p>
         Level 4 Transit delivers safe, on-time NEMT across DFW—wheelchair, ambulatory, and stretcher—door-to-door for appointments and discharges, with trained drivers and easy private pay or facility billing.
@@ -321,3 +322,4 @@
 
 </body>
 </html>
+
